@@ -1,0 +1,22 @@
+<section class="bg-dark-main vh-100">
+  <div>
+    <img src="../../../assets/images/3.svg" class="w-50" alt="">
+
+  </div>
+  <div class="mx-4">
+    <ul class="px-0 ">
+
+<ng-container *ngFor="let item of menu">
+
+     <li  *ngIf="item.isActive" >
+        <a [routerLink]="item.link" routerLinkActive="active-ul" class="item  d-block my-1" >
+          <span> <i class="me-2" [class]="item.icon" ></i>
+          </span>
+          <span>{{item.text}}</span>
+        </a>
+      </li>
+</ng-container>
+
+    </ul>
+  </div>
+</section>

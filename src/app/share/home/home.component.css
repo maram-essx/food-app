@@ -1,0 +1,14 @@
+.page-title{
+  background-image: url(../../../assets/images/Rectangle.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  color: white;
+
+span
+{
+  font-size: 18px;
+  font-weight: 300;
+}
+
+}

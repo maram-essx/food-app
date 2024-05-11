@@ -1,0 +1,147 @@
+<!-- <section class="container-fluid">
+<div class="">
+ <nav  class="navStyle bg-light">
+<div class=" row p-2">
+<div class="col-md-6">
+  <div class="search ps-3 ">
+    <div class="group">
+      <i class="fa-solid fa-magnifying-glass icon"></i>
+      <input class="input" type="search" placeholder="Search Here" />
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+
+<ul class="navbar-nav ms-auto d-flex align-items-center  px-2 me-2 ">
+           
+  <li class="nav-item ">
+    <a class="nav-link px-2 text-center " >
+      <img [src]="imagePath? baseUrl+imagePath:noImage" class="rounded-circle mx-2" height="50px" alt="">
+      <span>{{userName}}</span>
+    </a>
+  </li>
+
+  <li class="nav-item  ">
+      <a class="nav-link " >
+
+          <button class=" d-flex align-items-center justify-content-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon class=" text">expand_more</mat-icon>
+            
+          </button>
+          <mat-menu #menu="matMenu"  >
+            
+              <button mat-menu-item >
+                <mat-icon>person</mat-icon>
+               
+                <span>Edit Profile</span>
+              </button>
+
+            <button mat-menu-item >
+              <mat-icon>lock_open</mat-icon>
+             
+              <span>Change Password</span>
+            </button>
+
+            <button mat-menu-item >
+              <mat-icon>logout</mat-icon>
+              
+              <span>Logout</span>
+            </button>
+            
+          </mat-menu>
+
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" >
+          <i class="fa-solid fa-bell"></i>
+
+      </a>
+    </li>
+  
+
+</ul>
+</div>
+</div>
+  </nav>
+
+</div>
+
+
+</section> -->
+
+<section class="nav-bar  mt-3">
+  
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+      <button class="navbar-toggler" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <div class=" bg-white search w-75 ms-2 d-flex align-items-center">
+              <i class="fa-solid fa-magnifying-glass ms-3 icon "></i>
+              <input class="input form-control" type="search" placeholder="Search Here" >
+
+           </div>
+
+
+        <ul class="navbar-nav ms-auto d-flex align-items-center  px-2 me-2 ">
+         
+          <li class="nav-item ">
+            <a class="nav-link px-2 text-center " >
+              <img [src]="imagePath? baseUrl+imagePath:noImage" class="rounded-circle mx-2" height="50px" alt="">
+              <span>{{userName}}</span>
+            </a>
+          </li>
+
+          <li class="nav-item  ">
+              <a class="nav-link " >
+
+                  <button class=" d-flex align-items-center justify-content-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon class=" text">expand_more</mat-icon>
+                    
+                  </button>
+                  <mat-menu #menu="matMenu"  >
+                    
+                      <button mat-menu-item >
+                        <mat-icon>person</mat-icon>
+                       
+                        <span>Edit Profile</span>
+                      </button>
+
+                    <button mat-menu-item >
+                      <mat-icon>lock_open</mat-icon>
+                     
+                      <span>Change Password</span>
+                    </button>
+
+                    <button mat-menu-item >
+                      <mat-icon>logout</mat-icon>
+                      
+                      <span>Logout</span>
+                    </button>
+                    
+                  </mat-menu>
+
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" >
+                  <i class="fa-solid fa-bell"></i>
+
+              </a>
+            </li>
+          
+       
+        </ul>
+      </div>
+    </nav>
+
+
+</section>

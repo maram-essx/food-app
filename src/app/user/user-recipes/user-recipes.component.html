@@ -1,0 +1,145 @@
+<section>
+    <div class="page-title">
+      <div class="row align-items-center  px-3">
+        <div class="col-md-8">
+          <div>
+            <h1>Recipe <span>item</span></h1>
+            <p>
+              This is a welcoming screen for the entry of the application , you
+              can now see the options
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 text-end">
+          <div >
+            <img height="300" src="../../../assets/images/Group 48102127.svg"  class="w-50 " alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div>
+      <div class="d-flex align-items-center justify-content-between mt-2">
+        <h2 class="h4">Recipe Table Details</h2>
+      </div>
+      <p>You can check all details</p>
+      <div class="container">
+        <div class="row ">
+          <div class="col-md-6">
+            <mat-form-field class="example-form-field w-100" appearance="outline">
+              <mat-label>Clearable input</mat-label>
+              <input matInput type="text" [(ngModel)]="searchValue" (keyup.enter)="getRecipesData()">
+              <!-- (keyup)="getRecipesData()" mean with each letter ->call this fun-->
+              <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear"
+                (click)="searchValue='';getRecipesData()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+  
+          </div>
+  
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Tag</mat-label>
+              <mat-select [(ngModel)]="tagId" (selectionChange)="getRecipesData()">
+                <mat-option value="0">All</mat-option>
+  
+                <mat-option *ngFor="let tag of listTags" [value]="tag.id">{{tag.name}}</mat-option>
+  
+              </mat-select>
+            </mat-form-field>
+  
+          </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>category</mat-label>
+              <mat-select [(ngModel)]="categoryId" (selectionChange)="getRecipesData()">
+                <!-- <mat-select-trigger>
+            {{listCategories[0].name || ''}}
+            <span *ngIf="(listCategories?.length || 0) > 1"
+              class="example-additional-selection">
+              (+{{(listCategories?.length || 0) - 1}} {{listCategories?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger> -->
+                <mat-option value="0">All</mat-option>
+                <mat-option *ngFor="let item of listCategories.data" [value]="item.id">{{item.name}}</mat-option>
+  
+  
+              </mat-select>
+            </mat-form-field>
+  
+  
+  
+          </div>
+        </div>
+      </div>
+  
+<div class="container">
+  <div class="row py-2 gy-3 ">
+    <div class="col-md-4" *ngFor="let item of listData?.data">
+      <div class="position-relative ">
+        <img [src]="item.imagePath?baseUrlImg+item.imagePath : emptyImg" class="w-100 rounded-top-2 rounded-bottom-5  " alt="">
+        <div class="p-2">      
+            <h3>{{item.name}}</h3>
+
+            
+            <button class="btn btn-outline-success" (click)="onAddToFav(item.id)">Add To Fav</button>
+
+           <span class="position-absolute top-0 end-0 badge text-bg-light shadow-sm m-2">{{item.price |currency}}</span>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <!-- <table class="table table-striped">
+        <thead class="text-uppercase px-4">
+          <th>id</th>
+          <th>name</th>
+          <th>image</th>
+          <th>price</th>
+  
+          <th>desc</th>
+          <th>tag</th>
+          <th>category</th>
+          <th>creationDate</th>
+          <th>modificationDate</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listData?.data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td class="w-25"><img [src]="item.imagePath?baseUrlImg+item.imagePath : emptyImg" class="w-25" alt=""></td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.tag.name }}</td>
+            <td><span *ngFor="let category of item.category">
+                {{category.name}} <span *ngIf="item.category.length>1">,</span>
+              </span></td>
+            <td>{{ item.creationDate | date : "dd-mm-yy hh:mm a" }}</td>
+            <td>{{ item.modificationDate | date : "dd-mm-yy hh:mm a" }}</td>
+            <td>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>visibility</mat-icon>
+                  <span>view</span>
+                </button>
+          
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+  
+      <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
+        [length]="listData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
+        [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </section>
+  

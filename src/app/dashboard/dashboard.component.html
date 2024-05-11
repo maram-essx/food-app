@@ -1,0 +1,26 @@
+
+<section>
+  <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-2">
+<app-sidebar></app-sidebar>
+  </div>
+<div class="col-md-10">
+<app-navbar></app-navbar>
+<!-- <app-home></app-home> -->
+ <router-outlet></router-outlet>
+  </div>
+  </div>
+
+
+  </div>
+</section>
+<!---
+
+admin , user (appModule)
+dashboard =>(admin , user ) , guard(auth)
+-----------super admin or system user
+depend on guards
+admin guard ---user guard
+
+-->

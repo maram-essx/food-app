@@ -1,0 +1,132 @@
+<section>
+  <div class="page-title">
+    <div class="row align-items-center px-3">
+      <div class="col-md-8">
+        <div>
+          <h1>Users <span>item</span></h1>
+          <p>
+            This is a welcoming screen for the entry of the application , you
+            can now see the options
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 text-end">
+        <div>
+          <img src="../../../assets/images/Group 48102127.svg" class="w-50" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="d-flex align-items-center justify-content-between mt-2">
+      <h2 class="h4">Users Table</h2>
+      <button class="primary">Add New Category</button>
+    </div>
+    <p>You can check all details</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>search by</mat-label>
+            <mat-select [(ngModel)]="paramterKey" (selectionChange)="getUsersData()">
+              <!-- <mat-select-trigger>
+          {{listCategories[0].name || ''}}
+          <span *ngIf="(listCategories?.length || 0) > 1"
+            class="example-additional-selection">
+            (+{{(listCategories?.length || 0) - 1}} {{listCategories?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger> -->
+              <mat-option value="userName">name</mat-option>
+              <mat-option value="email">email</mat-option>
+              <mat-option value="country">country</mat-option>
+
+
+
+            </mat-select>
+          </mat-form-field>
+
+
+
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="example-form-field w-100" appearance="outline">
+            <mat-label>Clearable input</mat-label>
+            <input matInput type="text" [(ngModel)]="searchValue" (keyup.enter)="getUsersData()">
+            <!-- (keyup)="getRecipesData()" mean with each letter ->call this fun-->
+            <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear"
+              (click)="searchValue='';getUsersData()">
+              <mat-icon>close</mat-icon> 
+            </button>
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <mat-select multiple="" [(ngModel)]="roleIds" (selectionChange)="getUsersData()">
+              <!-- <mat-option value="0">All</mat-option> -->
+              <mat-option value="1">Admin</mat-option>
+              <mat-option value="2">User</mat-option>
+
+              <mat-option *ngFor="let tag of listTags" [value]="tag.id">{{tag.name}}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead class="text-uppercase px-4">
+        <th>id</th>
+        <th>name</th>
+        <th>image</th>
+        <th>email</th>
+
+        <th>phoneNumber</th>
+        <th>country</th>
+        <th>role</th>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listData?.data">
+          <td>{{ item.id }}</td>
+          <td>{{ item.userName }}</td>
+          <td class="w-25"><img [src]="item.imagePath?baseUrlImg+item.imagePath : emptyImg" class="w-25" alt=""></td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phoneNumber }}</td>
+          <td>{{ item.country }}</td>
+          <td>{{ item.group.name }}</td>
+
+
+
+          <td>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button (click)="openViewDialog(item)" mat-menu-item>
+                <mat-icon>visibility</mat-icon>
+                <span>view</span>
+              </button>
+
+              <button mat-menu-item (click)="openDeleteDialog(item.id)">
+                <mat-icon>delete</mat-icon>
+                <span>delete</span>
+              </button>
+            </mat-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
+      [length]="listData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
+      [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+  </div>
+</section>

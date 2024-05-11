@@ -1,0 +1,79 @@
+<section>
+  <div class="page-title">
+
+    <div class="row align-items-center px-3 ">
+      <div class="col-md-8">
+<div>
+  <h1>Categories  <span>item</span>
+</h1>
+<p>This is a welcoming screen for the entry of the application , you can now see the options</p>
+</div>
+      </div>
+      <div class="col-md-4 text-end">
+<div>
+  <img src="../../../assets/images/Group 48102127.svg" class="w-50" alt="">
+</div>
+      </div>
+    </div>
+  </div>
+
+<div>
+<div class="d-flex align-items-center  justify-content-between mt-2">
+  <h2 class="h4">Categories Table Details</h2>
+  <button class="primary" (click)="openDialog()">Add New Category</button>
+</div>
+<p>You can check all details</p>
+
+  <table class="table table-striped">
+    <thead>
+      <th>
+        Name
+      </th>
+      <th>Creation Date</th>
+      <th>Modification Date</th>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listData?.data">
+        <td>{{item.name}}</td>
+        <td>{{item.creationDate |date:'dd-mm-yy hh:mm a' }}</td>
+        <td>{{item.modificationDate  |date:'dd-mm-yy hh:mm a'}}</td>
+        <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item >
+              <mat-icon>visibility</mat-icon>
+              <span>view</span>
+            </button>
+            <button mat-menu-item (click)="onEdit(item.id)">
+              <mat-icon>edit</mat-icon>
+              <span>edit</span>
+            </button>
+            <button mat-menu-item (click)="openDeleteDialog(item.id)">
+              <mat-icon>delete</mat-icon>
+              <span>delete</span>
+            </button>
+          </mat-menu>
+         </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-paginator #paginator
+  class="demo-paginator"
+  (page)="handlePageEvent($event)"
+  [length]="listData?.totalNumberOfRecords"
+  [pageSize]="pageSize"
+ [pageIndex]="pageNumber"
+
+ [pageSizeOptions]="[ 5, 10, 25,100]"
+
+  aria-label="Select page">
+</mat-paginator>
+
+</div>
+
+
+</section>
